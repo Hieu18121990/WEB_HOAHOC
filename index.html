@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trang web Hóa học THPT</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        body {
+            margin: 0;
+            font-family: sans-serif;
+        }
+
+        .sticky-header {
+            position: fixed; /* Cố định header */
+            top: 0;
+            left: 0;
+            width: 100%;
+            background-color: #f0f0f0;
+            padding: 10px 20px;
+            z-index: 100;
+            display: flex;
+            text-align: center;
+            z-index: 100; /* Đảm bảo header nằm trên các phần tử khác */
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            justify-content: space-between; /* Phân phối không gian giữa các phần tử */
+        }
+
+        .header-left {
+            display: flex;
+            align-items: center;
+        }
+
+        .logo {
+            margin-right: 10px;
+        }
+
+        .logo img {
+            height: 30px;
+            vertical-align: middle;
+        }
+
+        .site-title {
+            font-size: 1em;
+            color: #007bff;
+            font-weight: bold;
+            margin-right: 10px; /* Thêm lại một chút margin bên phải */
+        }
+
+        .search-box {
+            display: flex;
+            align-items: center;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            padding: 3px;
+            flex-grow: 1; /* cho phép search-box chiếm không gian thừa */
+            margin-left: 10px; /* Thêm một chút khoảng cách bên trái */
+            margin-right: 10px; /* Thêm một chút khoảng cách bên phải */
+            position: relative; /* Tạo ngữ cảnh định vị cho search-icon */
+        }
+        .search-input {
+            border: none;
+            outline: none;
+            padding: 4px;
+            width: 95%; /* Cho phép input chiếm toàn bộ chiều rộng có thể */
+        }
+        .search-icon {
+            position: absolute; /* Định vị tuyệt đối */
+            right: 5px; /* Cách lề phải 5px */
+            top: 50%; /* Canh giữa theo chiều dọc */
+            transform: translateY(-50%); /* Điều chỉnh để canh giữa chính xác */
+            display: flex; /* Để căn giữa nội dung bên trong (nếu cần) */
+            align-items: center;
+        }
+        .search-icon img {
+            height: 20px;
+            margin-left: 10px;
+            opacity: 1;
+        }
+
+        .header-right {
+            display: flex;
+            align-items: center;
+        }
+
+        .links {
+            margin-right: 5px;
+        }
+
+        .links a {
+            text-decoration: none;
+            color: #333;
+            font-size: 0.8em;
+        }
+
+        .avatar {
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background-color: #ddd;
+            overflow: hidden;
+            margin-left: 10px;
+        }
+
+        .avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            vertical-align: middle;
+        }
+
+        .gallery-container {
+            margin-top: 60px; /* Điều chỉnh khoảng cách bên dưới header */
+            padding: 20px;
+        }
+
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            grid-gap: 10px;
+        }
+
+        .item {
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            overflow: hidden;
+        }
+
+        .item img {
+            display: block;
+            width: 100%;
+            height: auto;
+            object-fit: cover;
+        }
+
+        .info {
+            padding: 10px;
+            background-color: #f9f9f9;
+        }
+
+        .info h3 {
+            margin-top: 0;
+        }
+
+        .content {
+            padding-top: 45px;
+            padding: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="sticky-header">
+        <div class="header-left">
+            <div class="logo">
+                <a href="/">
+                    <img src="LOGO.PNG" alt="Logo Trang web Hóa học">
+                </a>
+            </div>
+            <div class="site-title">
+                KHÁM PHÁ THẾ GIỚI HOÁ HỌC
+            </div>
+        </div>
+
+        <div class="search-box">
+            <input type="text" class="search-input" placeholder="Tìm kiếm">
+            <div class="search-icon">
+                <a href="/">
+                    <img src="KINH LUP.PNG" alt="Biểu tượng kính lúp">
+                </a>
+            </div>
+        </div>
+
+        <div class="header-right">
+            <div class="links">
+                <a href="/gioi-thieu">GIỚI THIỆU</a>
+            </div>
+
+        <div class="avatar">
+            <a href="/">
+                <img src="AVATAR.PNG" alt="Avatar người dùng" style="display: block; width: 20px; height: 20px;">
+            </a>
+        </div>
+        </div>
+    </div>
+
+    <div class="gallery-container">
+        <div class="gallery">
+            <div class="item">
+                <img src="CHUONG 1 - CAU TAO NGUYEN TU.PNG" alt="CẤU TẠO NGUYÊN TỬ ">
+                <div class="overlay">
+                    <button>Lưu</button>
+                </div>
+                <div class="info">
+                    <h3>CHƯƠNG 1: CẤU TẠO NGUYÊN TỬ</h3>
+                    <p>NGUỒN: HOÁ HỌC 10  - SÁCH CHÂN TRỜI SÁNG TẠO</p>
+                </div>
+            </div>
+            <div class="item">
+                <img src="CHUONG 2 - BANG TUAN HOAN CAC NGUYEN TO HOA HOC.PNG" alt="BẢNG TUẦN HOÀN CÁC NGUYÊN TỐ HOÁ HỌC">
+                <div class="overlay">
+                    <button>Lưu</button>
+                </div>
+                <div class="info">
+                    <h3>CHƯƠNG 2: BẢNG TUẦN HOÀN CÁC NGUYÊN TỐ HOÁ HỌC</h3>
+                    <p>NGUỒN: HOÁ HỌC 10 - SÁCH CHÂN TRỜI SÁNG TẠO</p>
+                </div>
+            </div>
+            <div class="item">
+                <img src="CHUONG 3 - LIEN KET HOA HOC.PNG" alt="LIÊN KẾT HOÁ HỌC">
+                <div class="overlay">
+                    <button>Lưu</button>
+                </div>
+                <div class="info">
+                    <h3>CHƯƠNG 3: LIÊN KẾT HOÁ HỌC</h3>
+                    <p>NGUỒN: HOÁ HỌC 10 - SÁCH CHÂN TRỜI SÁNG TẠO</p>
+                </div>
+            </div>
+            <div class="item">
+                <img src="CHUONG 4 - PHAN UNG OXI HOA - KHU.PNG" alt="PHẢN ỨNG OXI HOÁ - KHỬ">
+                <div class="overlay">
+                    <button>Lưu</button>
+                </div>
+                <div class="info">
+                    <h3>CHƯƠNG 4: PHẢN ỨNG OXI HOÁ - KHỬ</h3>
+                    <p>NGUỒN: HOÁ HỌC 10 - SÁCH CHÂN TRỜI SÁNG TẠO
+                    </p>
+                </div>
+            </div>
+            <div class="item">
+                <img src="CHUONG 5 - NANG LUONG HOA HOC.PNG" alt="NĂNG LƯỢNG HOÁ HỌC">
+                <div class="overlay">
+                    <button>Lưu</button>
+                </div>
+                <div class="info">
+                    <h3>CHƯƠNG 5: NĂNG LƯỢNG HOÁ HỌC</h3>
+                    <p>NGUỒN: HOÁ HỌC 10 - SÁCH CHÂN TRỜI SÁNG TẠO</p>
+                </div>
+            </div>
+            <div class="item">
+                <img src="CHUONG 6 - TOC DO PHAN UNG HOA HOC.PNG" alt="TỐC ĐỘ PHẢN ỨNG HOÁ HỌC">
+                <div class="overlay">
+                    <button>Lưu</button>
+                </div>
+                <div class="info">
+                    <h3>CHƯƠNG 6: TỐC ĐỘ PHẢN ỨNG HOÁ HỌC</h3>
+                    <p>NGUỒN: HOÁ HỌC 10 - SÁCH CHÂN TRỜI SÁNG TẠO</p>
+                </div>
+            </div>
+            <div class="item">
+                <img src="CHUONG 7 - NHOM VIIA (NHOM HALOGEN).PNG" alt="NHÓM VIIA (NHÓM HALOGEN)">
+                <div class="overlay">
+                    <button>Lưu</button>
+                </div>
+                <div class="info">
+                    <h3>CHƯƠNG 7: NHÓM VIIA (NHÓM HALOGEN)</h3>
+                    <p>NGUỒN: HOÁ HỌC 10 - SÁCH CHÂN TRỜI SÁNG TẠO</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/masonry/4.2.2/masonry.pkgd.min.js"></script>
+    <script src="js/script.js"></script>
+
+</body>
+</html>

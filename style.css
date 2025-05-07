@@ -1,0 +1,294 @@
+<style>
+    body {
+        margin: 0;
+    }
+
+    .sticky-header {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        background-color: #f0f0f0;
+        padding: 10px 20px;
+        z-index: 100;
+        display: flex;
+        align-items: center;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        justify-content: space-between; /* Phân phối không gian giữa các phần tử */
+    }
+
+    .header-left {
+        display: flex;
+        align-items: center;
+    }
+
+    .logo {
+        margin-right: 10px;
+    }
+
+    .logo img {
+        height: 30px;
+        vertical-align: middle;
+    }
+
+    .site-title {
+        font-size: 1em;
+        color: #007bff;
+        font-weight: bold;
+        margin-right: 10px; /* Thêm lại một chút margin bên phải */
+    }
+
+    .search-box {
+        display: flex;
+        align-items: center;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        padding: 3px;
+        flex-grow: 1; /* Cho phép search-box chiếm không gian thừa */
+        margin-left: 10px; /* Thêm một chút khoảng cách bên trái */
+        margin-right: 10px; /* Thêm một chút khoảng cách bên phải */
+        position: relative; /* Tạo ngữ cảnh định vị cho search-icon */
+    }
+
+    .search-input {
+        border: none;
+        outline: none;
+        padding: 4px;
+        width: 95%; /* Cho phép input chiếm toàn bộ chiều rộng có thể */
+    }
+    .search-icon {
+        position: absolute; /* Định vị tuyệt đối */
+        right: 5px; /* Cách lề phải 5px */
+        top: 50%; /* Canh giữa theo chiều dọc */
+        transform: translateY(-50%); /* Điều chỉnh để canh giữa chính xác */
+        display: flex; /* Để căn giữa nội dung bên trong (nếu cần) */
+        align-items: center;
+    }
+    .search-icon img {
+        height: 20px;
+        margin-left: 10px;
+        opacity: 1;
+    }
+    .header-right {
+        display: flex;
+        align-items: center;
+    }
+
+    .links {
+        margin-right: 5px;
+    }
+
+    .links a {
+        text-decoration: none;
+        color: #333;
+        font-size: 0.8em;
+    }
+
+    .avatar {
+        width: 20px;
+        height: 20px;
+        border-radius: 50%;
+        background-color: #ddd;
+        overflow: hidden;
+        margin-left: 10px;
+    }
+
+    .avatar img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        vertical-align: middle;
+    }
+    .pinterest-gallery {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); /* Kích thước cột tối thiểu */
+        grid-gap: 8px; /* Khoảng cách giữa các item */
+        padding: 8px;
+        background-color: #f0f0f0;
+    }
+    
+    .item {
+        background-color: #fff;
+        border-radius: 6px;
+        box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+        overflow: hidden; /* Ẩn phần tử con vượt quá kích thước */
+        display: flex;
+        flex-direction: column; /* Sắp xếp hình ảnh và thông tin theo chiều dọc */
+    }
+    
+    .item img {
+        display: block;
+        width: 100%;
+        height: auto; /* Chiều cao tự động theo tỷ lệ khung hình */
+        border-radius: 6px 6px 0 0; /* Bo tròn góc trên của hình ảnh */
+    }
+    
+    .item .info {
+        padding: 8px; /* Giảm padding để tiết kiệm không gian */
+    }
+    
+    .item .info h3 {
+        margin-top: 5px; /* Giảm margin trên tiêu đề */
+        margin-bottom: 3px; /* Giảm margin dưới tiêu đề */
+        font-size: 0.9em;
+        line-height: 1.1;
+        overflow: hidden; /* Ẩn tiêu đề dài */
+        text-overflow: ellipsis; /* Hiển thị dấu ba chấm nếu tiêu đề quá dài */
+        white-space: nowrap; /* Ngăn tiêu đề xuống dòng */
+    }
+    
+    .item .info p {
+        font-size: 0.8em;
+        color: #555;
+        margin-bottom: 0; /* Loại bỏ margin dưới mô tả */
+        overflow: hidden; /* Ẩn mô tả dài */
+        text-overflow: ellipsis; /* Hiển thị dấu ba chấm nếu mô tả quá dài */
+        white-space: nowrap; /* Ngăn mô tả xuống dòng */
+    }
+    /* Kiểu dáng mặc định cho màn hình lớn hơn (ví dụ: máy tính để bàn) */
+    pinterest-gallery {
+        /* display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+        grid-gap: 8px; */ /* Có thể loại bỏ hoặc comment các thuộc tính grid */
+        padding: 8px;
+        background-color: #f0f0f0;
+    }
+    
+    .item {
+        background-color: #fff;
+        border-radius: 6px;
+        box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+        overflow: hidden;
+        /* display: flex;
+        flex-direction: column; */ /* Không cần thiết vì Masonry sẽ định vị */
+        position: relative;
+        margin-bottom: 8px; /* Thêm margin bottom cho các item */
+    }
+    
+    .item img {
+        display: block;
+        width: 100%;
+        height: auto;
+        border-radius: 6px 6px 0 0;
+        transition: filter 0.3s ease-in-out;
+    }
+    
+    .item:hover img {
+        filter: brightness(80%); /* Giảm độ sáng khi hover */
+    }
+    
+    .item .overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.1); /* Lớp phủ mờ */
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        opacity: 0; /* Ẩn lớp phủ mặc định */
+        transition: opacity 0.3s ease-in-out; /* Hiệu ứng chuyển đổi mượt mà cho độ mờ */
+    }
+    
+    .item:hover .overlay {
+        opacity: 1; /* Hiển thị lớp phủ khi hover */
+    }
+    
+    .item .overlay button {
+        background-color: #e0e0e0;
+        color: #333;
+        border: none;
+        padding: 10px 15px;
+        border-radius: 4px;
+        cursor: pointer;
+        font-size: 0.9em;
+        opacity: 0.8; /* Độ mờ của nút */
+        transition: opacity 0.3s ease-in-out;
+    }
+    
+    .item .overlay button:hover {
+        opacity: 1; /* Tăng độ mờ của nút khi hover vào nút */
+        background-color: #d0d0d0;
+    }
+    
+    .item .info {
+        padding: 8px;
+    }
+    
+    .item .info h3 {
+        margin-top: 5px;
+        margin-bottom: 3px;
+        font-size: 0.9em;
+        line-height: 1.1;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
+    
+    .item .info p {
+        font-size: 0.8em;
+        color: #555;
+        margin-bottom: 0;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
+
+/* Media query cho màn hình máy tính bảng (ví dụ: chiều rộng tối đa 768px) */
+@media (max-width: 768px) {
+    .pinterest-gallery {
+        grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); /* Giảm số cột trên máy tính bảng */
+        grid-gap: 8px;
+        padding: 8px;
+    }
+
+    .item {
+        border-radius: 6px;
+    }
+
+    .item img {
+        border-radius: 6px 6px 0 0;
+    }
+
+    .item .info {
+        padding: 8px;
+    }
+
+    .item .info h3 {
+        font-size: 0.9em;
+    }
+
+    .item .info p {
+        font-size: 0.8em;
+    }
+}
+
+/* Media query cho màn hình điện thoại (ví dụ: chiều rộng tối đa 480px) */
+@media (max-width: 480px) {
+    .pinterest-gallery {
+        grid-template-columns: repeat(auto-fill, minmax(100%, 1fr)); /* Chỉ một cột trên điện thoại */
+        grid-gap: 6px;
+        padding: 6px;
+    }
+
+    .item {
+        border-radius: 4px;
+    }
+
+    .item img {
+        border-radius: 4px 4px 0 0;
+    }
+
+    .item .info {
+        padding: 6px;
+    }
+
+    .item .info h3 {
+        font-size: 0.85em;
+    }
+
+    .item .info p {
+        font-size: 0.75em;
+    }
+}
